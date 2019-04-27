@@ -7,9 +7,27 @@ class UI {
         cryptoCurrencies.then(data => {
             return data.dataJson;
         }).then(data => {
-            return data.json();
-        }).then(data => {
-            console.log(data);
+            let a = data;
+            console.log(a);
+            let cryptoNames = [];
+            let output = '';
+            for (let item in a) {
+                console.log(typeof item.USD)
+                cryptoNames.push(item);
+            };
+
+            cryptoNames.forEach(el => {
+                let pattern = `<option value="${el}">${el}</option>`;
+                output += pattern;
+            })
+            setTimeout(function(){
+                let target = document.querySelector('.dropdown-content ');
+                target.innerHTML = output;
+                console.log(output);
+                console.log('111');
+            }, 5000)
+            
+
         })
         
     }
